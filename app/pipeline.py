@@ -369,7 +369,7 @@ class Pipeline:
                             print(f"[pipeline] {ch_id}: FAILOVER to {pid} "
                                   f"({st.warming.gen_key})", flush=True)
                             break
-            elif not st.active.running and now >= st.profiles[cur_profile].blocked_until:
+            elif not st.active.job.running and now >= st.profiles[cur_profile].blocked_until:
                 # process died outright — roll forward immediately
                 ps.failed_rolls = 0
                 st.warming = self._spawn_generation(st, cur_profile)
