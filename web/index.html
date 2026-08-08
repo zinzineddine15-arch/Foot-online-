@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Live — Protected Streaming</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div id="gate" class="gate hidden">
+  <div class="gate-card">
+    <div class="gate-logo">◉ AURORA <span>LIVE</span></div>
+    <p class="gate-sub">Protected stream access. Enter your access code.</p>
+    <form id="gate-form">
+      <input id="gate-code" type="password" autocomplete="off" placeholder="access code" spellcheck="false">
+      <button type="submit">Enter</button>
+    </form>
+    <p id="gate-error" class="gate-error"></p>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <div class="brand">◉ AURORA <span>LIVE</span></div>
+    <div class="top-status">
+      <span id="conn-dot" class="dot dot-ok"></span>
+      <span id="conn-label">connected</span>
+    </div>
+    <button id="logout" class="ghost">sign out</button>
+  </header>
+
+  <!-- player view -->
+  <section id="player-view" class="player-view hidden">
+    <div class="player-shell">
+      <video id="video" playsinline controls></video>
+      <div class="player-chrome">
+        <button id="back-btn" class="ghost">← guide</button>
+        <div class="now-playing">
+          <span class="live-chip">● LIVE</span>
+          <span id="np-name"></span>
+        </div>
+        <div class="player-tools">
+          <select id="quality" title="quality"></select>
+          <button id="failover-btn" class="ghost warn" title="Kill the primary encoder to demo automatic failover">test failover</button>
+          <button id="stats-btn" class="ghost">stats</button>
+        </div>
+      </div>
+      <div id="stats-panel" class="stats-panel hidden">
+        <div><label>level</label><span id="st-level">–</span></div>
+        <div><label>resolution</label><span id="st-res">–</span></div>
+        <div><label>bandwidth est.</label><span id="st-bw">–</span></div>
+        <div><label>buffer ahead</label><span id="st-buf">–</span></div>
+        <div><label>live latency</label><span id="st-lat">–</span></div>
+        <div><label>active source</label><span id="st-origin">–</span></div>
+        <div><label>key id</label><span id="st-kid">–</span></div>
+        <div><label>key rotations</label><span id="st-rot">–</span></div>
+        <div><label>failovers</label><span id="st-fo">–</span></div>
+      </div>
+      <div id="player-toast" class="toast hidden"></div>
+    </div>
+  </section>
+
+  <!-- guide view -->
+  <section id="guide-view" class="guide">
+    <h2 class="guide-title">Channel guide</h2>
+    <p class="guide-sub">AES-128 encrypted HLS · short-lived signed URLs · rolling keys · redundant encoders</p>
+    <div id="categories"></div>
+  </section>
+</div>
+
+<script src="/vendor/hls.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
