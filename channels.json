@@ -1,0 +1,48 @@
+{
+  "hls": {
+    "segment_seconds": 2,
+    "window_segments": 8,
+    "fps": 25,
+    "key_rotation_seconds": 60
+  },
+  "channels": [
+    {
+      "id": "aurora-one",
+      "name": "Aurora One",
+      "category": "Demo - Generated Feeds",
+      "color": "#6d5df6",
+      "description": "Flagship demo channel (synthetic test-card feed). Swap the profile inputs in channels.json for your own camera feeds or licensed sources.",
+      "profiles": [
+        {
+          "id": "primary",
+          "priority": 1,
+          "input": { "type": "lavfi", "pattern": "testsrc2", "tone_a": 440, "tone_b": 554 }
+        },
+        {
+          "id": "backup",
+          "priority": 2,
+          "input": { "type": "lavfi", "pattern": "smptehdbars", "tone_a": 392, "tone_b": 494 }
+        }
+      ]
+    },
+    {
+      "id": "aurora-motion",
+      "name": "Aurora Motion",
+      "category": "Demo - Generated Feeds",
+      "color": "#12b8a6",
+      "description": "Second demo channel with its own redundant encoders and independent key chain.",
+      "profiles": [
+        {
+          "id": "primary",
+          "priority": 1,
+          "input": { "type": "lavfi", "pattern": "smptehdbars", "tone_a": 330, "tone_b": 415 }
+        },
+        {
+          "id": "backup",
+          "priority": 2,
+          "input": { "type": "lavfi", "pattern": "testsrc", "tone_a": 262, "tone_b": 330 }
+        }
+      ]
+    }
+  ]
+}
